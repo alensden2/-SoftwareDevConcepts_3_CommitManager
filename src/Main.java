@@ -6,34 +6,25 @@ public class Main {
         System.out.println("Hello world!");
 
         CommitManager commitManager = new CommitManager();
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","C","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","C","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","F")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","C","D")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","C")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","D")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("C","B")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("D","C")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","A")));
         commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B","D")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B","F")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("C","E")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H","G")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H","G")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H","G")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H","G")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","H")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","G")));
-        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","G")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","D")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("B","C","D")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("E","A")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("A","B","E")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("D","E")));
+        commitManager.addCommit("alen",2, "b-232", new HashSet<>(Arrays.asList("D","C")));
 
+
+        commitManager.componentMinimum(1);
+        System.out.println("Hello world!");
 
     }
 }
