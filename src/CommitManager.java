@@ -7,7 +7,9 @@ public class CommitManager {
     GraphWeightCalculator graphWeightCalculator = new GraphWeightCalculator();
     VertexRelationBuilder vertexRelationBuilder = new VertexRelationBuilder();
     PopulateMatrix populateMatrix = new PopulateMatrix();
+    MatrixRelations matrixRelations = new MatrixRelations();
     Map<String, Integer> frequencyPairMap = new HashMap<>();
+    int[][] adjMatrix;
 
     Set<String> totalFiles = new HashSet<>();
     Set<Set<String>> components = new HashSet<>();
@@ -21,7 +23,8 @@ public class CommitManager {
         // accessing the set of files
         filesCommitted = commitObj.commitFiles;
 
-        // to get the relation between files we get all the possible connections of graph
+        // to get the relation between files we get all the possible connections of
+        // graph
         commitFilesRelation.addAll(vertexRelationBuilder.findConnections(commitFiles));
 
         // this is to calculate the size of the 2d matrix
@@ -30,17 +33,17 @@ public class CommitManager {
 
         // to get values to fill in the 8x8 mat
 
-
         return true;
     }
 
-    boolean componentMinimum(int threshold){
+    boolean componentMinimum(int threshold) {
         frequencyPairMap = graphWeightCalculator.frequencyPairs(commitFilesRelation);
 
         populateMatrix.createMatrix(totalFiles);
 
-        System.out.println(populateMatrix.populateMatrixFrequencies(frequencyPairMap));
-
+        adjMatrix = populateMatrix.populateMatrixFrequencies(frequencyPairMap);
+        matrixRelations.createGeneralComponentSet(adjMatrix, totalFiles.size(), 4, totalFiles);
+        matrixRelations.relatedComponents(adjMatrix);
         return true;
     }
 }

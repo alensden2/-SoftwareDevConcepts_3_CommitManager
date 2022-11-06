@@ -6,7 +6,7 @@ public class CommitObject {
     String task;
     Set<String> commitFiles;
 
-    CommitObject(String dev, int time, String taskString, Set<String> commit){
+    CommitObject(String dev, int time, String taskString, Set<String> commit) {
         developer = dev;
         commitTime = time;
         task = taskString;
