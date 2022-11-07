@@ -1,10 +1,13 @@
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
+        CommitManager commitM  =new CommitManager();
+//        commitManager.clearTimeWindow();
+
+        /*
         CommitManager commitManager = new CommitManager();
         commitManager.addCommit("alen", 2, "b-232", new HashSet<>(Arrays.asList("A", "B", "C", "D")));
         commitManager.addCommit("alen", 2, "b-232", new HashSet<>(Arrays.asList("A", "B", "C")));

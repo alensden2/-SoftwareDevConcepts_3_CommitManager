@@ -2,6 +2,7 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public class MatrixRelationsTests {
     @Test
@@ -17,9 +18,13 @@ public class MatrixRelationsTests {
                 {0,0,0,0,8,0,4,0}
         };
         MatrixRelations matrixRelations = new MatrixRelations();
+        BugTasks bugTasks = new BugTasks();
         matrixRelations.createGeneralComponentSet(adjMatrix,8,7, new HashSet<>(Arrays.asList("A","B","C","D","E","F","G","H")));
         matrixRelations.relatedComponents(adjMatrix);
         matrixRelations.commonComponentGenerator();
-        matrixRelations.getAllComponents();
+        Set<Set<String>> allComponents = new HashSet<>();
+        allComponents = matrixRelations.getAllComponents();
+        System.out.println(allComponents);
+        bugTasks.generateMaxFrequencyCommits();
     }
 }
