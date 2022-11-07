@@ -11,6 +11,8 @@ public class CommitManager {
     MatrixRelations matrixRelations = new MatrixRelations();
     Map<String, Integer> frequencyPairMap = new HashMap<>();
     BroadFeatures broadFeatures = new BroadFeatures();
+    BusyClasses busyClasses = new BusyClasses();
+
     int[][] adjMatrix;
 
     Set<String> totalFiles = new HashSet<>();
@@ -23,6 +25,7 @@ public class CommitManager {
         bugTasks.generateMapForTasks(task, commitFiles);
         expert.generateMapForExpert(developer, commitFiles);
         broadFeatures.generateMapForFeatures(task, commitFiles);
+        busyClasses.storeFiles(commitFiles);
         CommitObject commitObj = new CommitObject(developer, commitTime, task, commitFiles);
         // add obj
         totalCommitsMade.add(commitObj);
@@ -77,12 +80,19 @@ public class CommitManager {
         return broadFeaturesSet;
     }
 
-    Set<String> expert(int threshold) {
+    Set<String> experts(int threshold) {
         Set<String> expertsSet = new HashSet<>();
         expert.unionOfAllFiles();
         expert.getBroadFeatures(components);
         expertsSet = expert.getFeaturesThreshold(threshold);
         return expertsSet;
+    }
+
+    List<String> busyClasses ( int limit ) {
+        List<String> busyClass = new ArrayList<>();
+        busyClasses.generateFrequencyTable();
+        busyClass = busyClasses.getBusyClasses(limit);
+        return busyClass;
     }
 
 }
