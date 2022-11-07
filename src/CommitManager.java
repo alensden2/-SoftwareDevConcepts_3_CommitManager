@@ -42,8 +42,14 @@ public class CommitManager {
         populateMatrix.createMatrix(totalFiles);
 
         adjMatrix = populateMatrix.populateMatrixFrequencies(frequencyPairMap);
-        matrixRelations.createGeneralComponentSet(adjMatrix, totalFiles.size(), 4, totalFiles);
+        matrixRelations.createGeneralComponentSet(adjMatrix, totalFiles.size(), threshold, totalFiles);
         matrixRelations.relatedComponents(adjMatrix);
+        matrixRelations.commonComponentGenerator();
         return true;
     }
+
+    Set<Set<String>> softwareComponents(){
+        return matrixRelations.getAllComponents();
+    }
+
 }

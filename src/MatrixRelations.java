@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MatrixRelations {
     Set<String> generalComponents = new HashSet<>();
@@ -9,6 +6,7 @@ public class MatrixRelations {
     Set<Set<String>> connectedComponents = new HashSet<>();
     List<String> arrayIndex = new ArrayList<>();
     List<Integer> rowsToBeAvoided = new ArrayList<>();
+    Set<Set<String>> commonComponentSet = new HashSet<>();
     int size;
     int threshold;
 
@@ -36,7 +34,7 @@ public class MatrixRelations {
         List<String> independentComponentList = new ArrayList<>();
         List<Integer> rowsToBeAvoided = new ArrayList<>();
         independentComponentList.addAll(independentComponents);
-        for(int i = 0; i<independentComponentList.size(); i++){
+        for (int i = 0; i < independentComponentList.size(); i++) {
             String component = independentComponentList.get(i);
             int indexToBeAvoided = arrayIndex.indexOf(component);
             rowsToBeAvoided.add(indexToBeAvoided);
@@ -50,21 +48,84 @@ public class MatrixRelations {
         Set<String> linkedNodes = new HashSet<>();
         List<String> generalComponentsList = new ArrayList<>();
         generalComponentsList.addAll(generalComponents);
-        for(int i = 0; i < generalComponentsList.size(); i++){
+        for (int i = 0; i < generalComponentsList.size(); i++) {
             connectedComponents.add(linkedNodes);
             linkedNodes = new HashSet<>();
-                for(int j = 0; j < generalComponentsList.size(); j++){
+            for (int j = 0; j < generalComponentsList.size(); j++) {
 
-                        String x1 = generalComponentsList.get(i);
-                        String y1 = generalComponentsList.get(j);
-                        int xCoordinate = arrayIndex.indexOf(x1);
-                        int yCoordinate = arrayIndex.indexOf(y1);
-                        if(adjMatrix[xCoordinate][yCoordinate] >= threshold){
-                            linkedNodes.add(x1);
-                            linkedNodes.add(y1);
-                        }
-
+                String x1 = generalComponentsList.get(i);
+                String y1 = generalComponentsList.get(j);
+                int xCoordinate = arrayIndex.indexOf(x1);
+                int yCoordinate = arrayIndex.indexOf(y1);
+                if (adjMatrix[xCoordinate][yCoordinate] >= threshold) {
+                    linkedNodes.add(x1);
+                    linkedNodes.add(y1);
                 }
+
+            }
         }
     }
+
+    void commonComponentGenerator() {
+        Set<Set<String>> connectedComponent = null;
+        Set<Set<String>> finalComponents = new HashSet<>();
+        connectedComponent = this.connectedComponents;
+        connectedComponent.removeIf(x -> (x.size() == 0));
+        for (Set<String> s : connectedComponent) {
+            if (finalComponents.size() == 0) {
+                finalComponents.add(s);
+            }
+            Iterator<Set<String>> finalComponentIterator = finalComponents.iterator();
+            while (finalComponentIterator.hasNext()) {
+                Set<String> x = finalComponentIterator.next();
+                Set<String> tempSet1 = new HashSet<>(s);
+                Set<String> tempSet2 = new HashSet<>(s);
+                tempSet1.retainAll(x);
+                if (tempSet1.size() > 0) {
+                    finalComponents.remove(x);
+                    tempSet2.addAll(x);
+                    finalComponents.add(tempSet2);
+                    tempSet1 = new HashSet<>();
+                    tempSet2 = new HashSet<>();
+                    break;
+                } else {
+                    if (!finalComponentIterator.hasNext())
+                        finalComponents.add(s);
+                }
+                //System.out.println(finalComponentIterator.next());
+            }
+//            for(Set<String> x: finalComponents){
+//                    Set<String> tempSet1 = new HashSet<>(s);
+//                    Set<String> tempSet2 = new HashSet<>(s);
+//                    tempSet1.retainAll(x);
+//                    if(tempSet1.size()>0){
+//                        finalComponents.remove(x);
+//                        tempSet2.addAll(x);
+//                        finalComponents.add(tempSet2);
+//                        tempSet1 = new HashSet<>();
+//                        tempSet2 = new HashSet<>();
+//                        break;
+//                    }else {
+//                        if(finalComponents.)
+//                        finalComponents.add(s);
+//                        continue;
+//                    }
+//                }
+
+        }
+        commonComponentSet.addAll(finalComponents);
+    }
+
+    Set<Set<String>> getAllComponents(){
+        Set<Set<String>> allComponents = new HashSet<>();
+        Set<String> unrelatedComponents = new HashSet<>();
+        allComponents.addAll(commonComponentSet);
+        for(String s : independentComponents){
+            unrelatedComponents.add(s);
+            allComponents.add(unrelatedComponents);
+            unrelatedComponents = new HashSet<>();
+        }
+        return allComponents;
+    }
+
 }

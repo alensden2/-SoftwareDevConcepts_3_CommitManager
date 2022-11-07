@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32ad58e1-7d92-43be-b04e-0b29f739d980" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment_3_Graph.iml" beforeDir="false" afterPath="$PROJECT_DIR$/assignment_3_Graph.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/MatrixRelationsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/MatrixRelationsTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CommitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommitManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CommitObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommitObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphWeightCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphWeightCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PopulateMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopulateMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VertexRelationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VertexRelationBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MatrixRelations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MatrixRelations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,20 +34,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.Main">
+}</component>
+  <component name="RunManager" selected="TestNG.MatrixRelationsTests.testAddInput">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="assignment_3_Graph" />
@@ -73,8 +69,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="TestNG.MatrixRelationsTests.testAddInput" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -103,34 +99,32 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/GraphWeightCalculator.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="18" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MatrixRelations.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="40" />
+          <url>file://$PROJECT_DIR$/src/MatrixRelations.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/VertexRelationBuilder.java</url>
-          <line>3</line>
-          <properties class="VertexRelationBuilder" method="findConnections">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="73" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MatrixRelations.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="((HashSet)connectedComponents.toArray()[1]).toArray()[2]" custom="java.util.HashSet" />
+        <watch expression="tempSet1" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/assignment_3_Graph$Main.ic" NAME="Main Coverage Results" MODIFIED="1667685876495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/assignment_3_Graph$MatrixRelationsTests_testAddInput.ic" NAME="MatrixRelationsTests.testAddInput Coverage Results" MODIFIED="1667764093748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
