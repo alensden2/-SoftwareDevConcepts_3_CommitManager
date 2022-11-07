@@ -3,6 +3,8 @@ import java.util.*;
 public class CommitManager {
 
     List<CommitObject> totalCommitsMade = new ArrayList<>();
+    List<CommitObject> allCommits = new ArrayList<>();
+
     List<String> commitFilesRelation = new ArrayList<>();
     GraphWeightCalculator graphWeightCalculator = new GraphWeightCalculator();
     VertexRelationBuilder vertexRelationBuilder = new VertexRelationBuilder();
@@ -12,6 +14,8 @@ public class CommitManager {
     Map<String, Integer> frequencyPairMap = new HashMap<>();
     BroadFeatures broadFeatures = new BroadFeatures();
     BusyClasses busyClasses = new BusyClasses();
+    int start;
+    int end;
 
     int[][] adjMatrix;
 
@@ -21,29 +25,66 @@ public class CommitManager {
 
 
     boolean addCommit(String developer, int commitTime, String task, Set<String> commitFiles) {
-        Set<String> filesCommitted;
-        bugTasks.generateMapForTasks(task, commitFiles);
-        expert.generateMapForExpert(developer, commitFiles);
-        broadFeatures.generateMapForFeatures(task, commitFiles);
-        busyClasses.storeFiles(commitFiles);
-        CommitObject commitObj = new CommitObject(developer, commitTime, task, commitFiles);
-        // add obj
-        totalCommitsMade.add(commitObj);
+        if(start != -1 && end !=-1){
+            CommitObject commitObj = new CommitObject(developer, commitTime, task, commitFiles);
+            if(commitTime>=start && commitTime <= end){
 
-        // accessing the set of files
-        filesCommitted = commitObj.commitFiles;
+                Set<String> filesCommitted;
+                bugTasks.generateMapForTasks(task, commitFiles);
+                expert.generateMapForExpert(developer, commitFiles);
+                broadFeatures.generateMapForFeatures(task, commitFiles);
+                busyClasses.storeFiles(commitFiles);
 
-        // to get the relation between files we get all the possible connections of
-        // graph
-        commitFilesRelation.addAll(vertexRelationBuilder.findConnections(commitFiles));
+                // add obj
+                totalCommitsMade.add(commitObj);
+                allCommits.add(commitObj);
 
-        // this is to calculate the size of the 2d matrix
-        String[] filesCommittedArray = filesCommitted.toArray(new String[filesCommitted.size()]);
-        Collections.addAll(totalFiles, filesCommittedArray);
+                // accessing the set of files
+                filesCommitted = commitObj.commitFiles;
 
-        // to get values to fill in the 8x8 mat
+                // to get the relation between files we get all the possible connections of
+                // graph
+                commitFilesRelation.addAll(vertexRelationBuilder.findConnections(commitFiles));
 
-        return true;
+                // this is to calculate the size of the 2d matrix
+                String[] filesCommittedArray = filesCommitted.toArray(new String[filesCommitted.size()]);
+                Collections.addAll(totalFiles, filesCommittedArray);
+
+                // to get values to fill in the 8x8 mat
+
+                return true;
+            } else {
+                allCommits.add(commitObj);
+            }
+
+        } else {
+            Set<String> filesCommitted;
+            bugTasks.generateMapForTasks(task, commitFiles);
+            expert.generateMapForExpert(developer, commitFiles);
+            broadFeatures.generateMapForFeatures(task, commitFiles);
+            busyClasses.storeFiles(commitFiles);
+            CommitObject commitObj = new CommitObject(developer, commitTime, task, commitFiles);
+
+            // add obj
+            totalCommitsMade.add(commitObj);
+            allCommits.add(commitObj);
+
+            // accessing the set of files
+            filesCommitted = commitObj.commitFiles;
+
+            // to get the relation between files we get all the possible connections of
+            // graph
+            commitFilesRelation.addAll(vertexRelationBuilder.findConnections(commitFiles));
+
+            // this is to calculate the size of the 2d matrix
+            String[] filesCommittedArray = filesCommitted.toArray(new String[filesCommitted.size()]);
+            Collections.addAll(totalFiles, filesCommittedArray);
+
+            // to get values to fill in the 8x8 mat
+
+            return true;
+        }
+        return false;
     }
 
     boolean componentMinimum(int threshold) {
@@ -95,4 +136,23 @@ public class CommitManager {
         return busyClass;
     }
 
+    boolean setTimeWindow( int startTime, int endTime ){
+        if(allCommits.size() == 0){
+            start = startTime;
+            end = endTime;
+        } else {
+            start = startTime;
+            end = endTime;
+            for (CommitObject commitObject : allCommits){
+                addCommit(commitObject.developer, commitObject.commitTime,commitObject.task,commitObject.commitFiles);
+            }
+        }
+
+        return true;
+    }
+
+    void clearTimeWindow(){
+        start = -1;
+        end = -1;
+    }
 }
