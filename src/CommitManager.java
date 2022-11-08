@@ -1,12 +1,13 @@
+
 /**
  * Software Development Concepts
- * 
+ *
  * @author Alen Santosh John
  * @author B00930528
- * 
- *         Commit Manager
- * 
+ * <p>
+ * Commit Manager
  */
+
 import java.util.*;
 
 public class CommitManager {
@@ -34,7 +35,6 @@ public class CommitManager {
     Expert expert = new Expert();
 
     /**
-     * 
      * @param developer
      * @param commitTime
      * @param task
@@ -105,24 +105,27 @@ public class CommitManager {
     }
 
     /**
-     * 
      * @param threshold
      * @return
      */
     boolean componentMinimum(int threshold) {
-        frequencyPairMap = graphWeightCalculator.frequencyPairs(commitFilesRelation);
+        if (threshold > 0) {
+            frequencyPairMap = graphWeightCalculator.frequencyPairs(commitFilesRelation);
 
-        populateMatrix.createMatrix(totalFiles);
+            populateMatrix.createMatrix(totalFiles);
 
-        adjMatrix = populateMatrix.populateMatrixFrequencies(frequencyPairMap);
-        matrixRelations.createGeneralComponentSet(adjMatrix, totalFiles.size(), threshold, totalFiles);
-        matrixRelations.relatedComponents(adjMatrix);
-        matrixRelations.commonComponentGenerator();
-        return true;
+            adjMatrix = populateMatrix.populateMatrixFrequencies(frequencyPairMap);
+            matrixRelations.createGeneralComponentSet(adjMatrix, totalFiles.size(), threshold, totalFiles);
+            matrixRelations.relatedComponents(adjMatrix);
+            matrixRelations.commonComponentGenerator();
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     /**
-     * 
      * @return
      */
     Set<Set<String>> softwareComponents() {
@@ -133,81 +136,96 @@ public class CommitManager {
     }
 
     /**
-     * 
      * @param threshold
      * @return
      */
-    Set<String> repetitionInBugs(int threshold) {
-        bugTasks.generateMaxFrequencyCommits();
-        Set<String> repeatedBugs = new HashSet<>();
-        repeatedBugs = bugTasks.repeatedBugs(threshold);
-        return repeatedBugs;
+    Set<String> repetionInBugs(int threshold) {
+        if (threshold > 0) {
+            bugTasks.generateMaxFrequencyCommits();
+            Set<String> repeatedBugs = new HashSet<>();
+            repeatedBugs = bugTasks.repeatedBugs(threshold);
+            return repeatedBugs;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * 
      * @param threshold
      * @return
      */
     Set<String> broadFeatures(int threshold) {
-        Set<String> broadFeaturesSet = new HashSet<>();
-        broadFeatures.unionOfAllFiles();
-        broadFeatures.getBroadFeatures(components);
-        broadFeaturesSet = broadFeatures.getFeaturesThreshold(threshold);
-        return broadFeaturesSet;
+        if (threshold > 0) {
+            Set<String> broadFeaturesSet = new HashSet<>();
+            broadFeatures.unionOfAllFiles();
+            broadFeatures.getBroadFeatures(components);
+            broadFeaturesSet = broadFeatures.getFeaturesThreshold(threshold);
+            return broadFeaturesSet;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * 
      * @param threshold
      * @return
      */
     Set<String> experts(int threshold) {
-        Set<String> expertsSet = new HashSet<>();
-        expert.unionOfAllFiles();
-        expert.getBroadFeatures(components);
-        expertsSet = expert.getFeaturesThreshold(threshold);
-        return expertsSet;
+        if (threshold > 0) {
+            Set<String> expertsSet = new HashSet<>();
+            expert.unionOfAllFiles();
+            expert.getBroadFeatures(components);
+            expertsSet = expert.getFeaturesThreshold(threshold);
+            return expertsSet;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * 
      * @param limit
      * @return
      */
     List<String> busyClasses(int limit) {
-        List<String> busyClass = new ArrayList<>();
-        busyClasses.generateFrequencyTable();
-        busyClass = busyClasses.getBusyClasses(limit);
-        return busyClass;
+        if (limit > 0) {
+            List<String> busyClass = new ArrayList<>();
+            busyClasses.generateFrequencyTable();
+            busyClass = busyClasses.getBusyClasses(limit);
+            return busyClass;
+        } else {
+            return null;
+        }
     }
 
     /**
-     * 
      * @param startTime
      * @param endTime
      * @return
      */
     boolean setTimeWindow(int startTime, int endTime) {
-        if (allCommits.size() == 0) {
-            start = startTime;
-            end = endTime;
+        if (startTime < endTime) {
+            if (allCommits.size() == 0) {
+                start = startTime;
+                end = endTime;
+            } else {
+                start = startTime;
+                end = endTime;
+                Iterator<CommitObject> it = allCommits.iterator();
+                while (it.hasNext()) {
+                    CommitObject s = it.next();
+                    CommitObject newS = new CommitObject(s.developer, s.commitTime, s.task, s.commitFiles);
+                    allCommitsCopy.add(newS);
+                }
+                for (CommitObject commitObject : allCommitsCopy) {
+                    allCommits.clear();
+                    addCommit(commitObject.developer, commitObject.commitTime, commitObject.task,
+                            commitObject.commitFiles);
+                }
+            }
+            return true;
         } else {
-            start = startTime;
-            end = endTime;
-            Iterator<CommitObject> it = allCommits.iterator();
-            while (it.hasNext()) {
-                CommitObject s = it.next();
-                CommitObject newS = new CommitObject(s.developer, s.commitTime, s.task, s.commitFiles);
-                allCommitsCopy.add(newS);
-            }
-            for (CommitObject commitObject : allCommitsCopy) {
-                allCommits.clear();
-                addCommit(commitObject.developer, commitObject.commitTime, commitObject.task, commitObject.commitFiles);
-            }
+            return false;
         }
-
-        return true;
     }
 
     void clearTimeWindow() {
