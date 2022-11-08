@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="32ad58e1-7d92-43be-b04e-0b29f739d980" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BroadFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BroadFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BugTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BugTasks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CommitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommitManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,24 +105,33 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Test/MatrixRelationsTests.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="102" />
+          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/BusyClasses.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="184" />
+          <line>140</line>
+          <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="186" />
+          <line>143</line>
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
+          <line>139</line>
+          <properties class="CommitManager" method="setTimeWindow">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="211" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

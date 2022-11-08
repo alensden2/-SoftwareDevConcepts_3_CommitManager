@@ -4,6 +4,7 @@ public class CommitManager {
 
     List<CommitObject> totalCommitsMade = new ArrayList<>();
     List<CommitObject> allCommits = new ArrayList<>();
+    List<CommitObject> allCommitsCopy = new ArrayList<>();
 
     List<String> commitFilesRelation = new ArrayList<>();
     GraphWeightCalculator graphWeightCalculator = new GraphWeightCalculator();
@@ -14,8 +15,8 @@ public class CommitManager {
     Map<String, Integer> frequencyPairMap = new HashMap<>();
     BroadFeatures broadFeatures = new BroadFeatures();
     BusyClasses busyClasses = new BusyClasses();
-    int start;
-    int end;
+    int start = -1;
+    int end= -1;
 
     int[][] adjMatrix;
 
@@ -143,7 +144,14 @@ public class CommitManager {
         } else {
             start = startTime;
             end = endTime;
-            for (CommitObject commitObject : allCommits){
+            Iterator<CommitObject> it = allCommits.iterator();
+            while (it.hasNext()) {
+                CommitObject s = it.next();
+                CommitObject newS = new CommitObject(s.developer,s.commitTime,s.task,s.commitFiles);
+                allCommitsCopy.add(newS);
+            }
+            for (CommitObject commitObject : allCommitsCopy){
+                allCommits.clear();
                 addCommit(commitObject.developer, commitObject.commitTime,commitObject.task,commitObject.commitFiles);
             }
         }
@@ -154,5 +162,15 @@ public class CommitManager {
     void clearTimeWindow(){
         start = -1;
         end = -1;
+        Iterator<CommitObject> it = allCommits.iterator();
+        while (it.hasNext()) {
+            CommitObject s = it.next();
+            CommitObject newS = new CommitObject(s.developer,s.commitTime,s.task,s.commitFiles);
+            allCommitsCopy.add(newS);
+        }
+        for (CommitObject commitObject : allCommitsCopy){
+            allCommits.clear();
+            addCommit(commitObject.developer, commitObject.commitTime,commitObject.task,commitObject.commitFiles);
+        }
     }
 }

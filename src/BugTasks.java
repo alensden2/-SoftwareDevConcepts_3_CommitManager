@@ -9,21 +9,23 @@ public class BugTasks {
     Set<String> repeatedBugs = new HashSet<>();
     void generateMapForTasks(String taskName, Set<String> committedFiles) {
         ArrayList<String> files = new ArrayList<>();
+        if(taskName.charAt(0) == 'B'){
+            if (taskFiles.containsKey(taskName)) {
+                ArrayList<String> currentFiles = new ArrayList<>();
+                currentFiles = taskFiles.get(taskName);
+                files.addAll(committedFiles);
+                files.addAll(currentFiles);
+                taskFiles.put(taskName, files);
+                files = new ArrayList<>();
 
-        if (taskFiles.containsKey(taskName)) {
-            ArrayList<String> currentFiles = new ArrayList<>();
-            currentFiles = taskFiles.get(taskName);
-            files.addAll(committedFiles);
-            files.addAll(currentFiles);
-            taskFiles.put(taskName, files);
-            files = new ArrayList<>();
-
-        } else {
-            files.addAll(committedFiles);
-            taskFiles.put(taskName, files);
-            // clear
-            files = new ArrayList<>();
+            } else {
+                files.addAll(committedFiles);
+                taskFiles.put(taskName, files);
+                // clear
+                files = new ArrayList<>();
+            }
         }
+
     }
 // ref - https://www.geeksforgeeks.org/iterate-map-java/
     void generateMaxFrequencyCommits() {

@@ -9,20 +9,21 @@ public class BroadFeatures {
 
     void generateMapForFeatures(String taskName, Set<String> committedFiles) {
         ArrayList<String> files = new ArrayList<>();
+        if(taskName.charAt(0) == 'F'){
+            if (taskFiles.containsKey(taskName)) {
+                ArrayList<String> currentFiles = new ArrayList<>();
+                currentFiles = taskFiles.get(taskName);
+                files.addAll(committedFiles);
+                files.addAll(currentFiles);
+                taskFiles.put(taskName, files);
+                files = new ArrayList<>();
 
-        if (taskFiles.containsKey(taskName)) {
-            ArrayList<String> currentFiles = new ArrayList<>();
-            currentFiles = taskFiles.get(taskName);
-            files.addAll(committedFiles);
-            files.addAll(currentFiles);
-            taskFiles.put(taskName, files);
-            files = new ArrayList<>();
-
-        } else {
-            files.addAll(committedFiles);
-            taskFiles.put(taskName, files);
-            // clear
-            files = new ArrayList<>();
+            } else {
+                files.addAll(committedFiles);
+                taskFiles.put(taskName, files);
+                // clear
+                files = new ArrayList<>();
+            }
         }
     }
 
