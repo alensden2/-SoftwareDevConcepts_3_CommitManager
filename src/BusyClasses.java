@@ -1,3 +1,12 @@
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         This class is used to get all the busy classes
+ * 
+ */
 import java.util.*;
 
 public class BusyClasses {
@@ -6,6 +15,10 @@ public class BusyClasses {
     Map<String, Integer> sortedFrequencyTable = new LinkedHashMap<>();
     int count;
 
+    /**
+     * 
+     * @param commitFiles
+     */
     void storeFiles(Set<String> commitFiles) {
         committedFiles.addAll(commitFiles);
     }
@@ -20,9 +33,15 @@ public class BusyClasses {
             }
         }
         // reference - https://howtodoinjava.com/java/sort/java-sort-map-by-values/
-        frequencyTable.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEachOrdered(x -> sortedFrequencyTable.put(x.getKey(), x.getValue()));
+        frequencyTable.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedFrequencyTable.put(x.getKey(), x.getValue()));
     }
 
+    /**
+     * 
+     * @param limit
+     * @return
+     */
     List<String> getBusyClasses(int limit) {
         Iterator<Map.Entry<String, Integer>> itr = sortedFrequencyTable.entrySet().iterator();
         Map<String, Integer> busyClasses = new LinkedHashMap<>();
@@ -39,17 +58,16 @@ public class BusyClasses {
             }
         }
 
-        String valueToBeFound = busyClass.get(limit-1);
+        String valueToBeFound = busyClass.get(limit - 1);
         int valueOfToBeFound = sortedFrequencyTable.get(valueToBeFound);
 
         Iterator<Map.Entry<String, Integer>> iter = sortedFrequencyTable.entrySet().iterator();
 
-        while(iter.hasNext())
-        {
+        while (iter.hasNext()) {
             Map.Entry<String, Integer> entry = iter.next();
-            if((entry.getValue() == valueOfToBeFound)){
-                if(!busyClass.contains(entry.getKey()))
-                busyClass.add(entry.getKey());
+            if ((entry.getValue() == valueOfToBeFound)) {
+                if (!busyClass.contains(entry.getKey()))
+                    busyClass.add(entry.getKey());
             }
         }
         return busyClass;

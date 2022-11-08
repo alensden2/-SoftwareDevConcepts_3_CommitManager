@@ -1,3 +1,13 @@
+
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         finds related vertices
+ * 
+ */
 import java.util.*;
 
 public class VertexRelationBuilder {
@@ -9,7 +19,8 @@ public class VertexRelationBuilder {
         for (int i = 0; i < fileList.size(); i++) {
             for (int j = 0; j < fileList.size(); j++) {
                 if (i == j) {
-                    ;;
+                    ;
+                    ;
                 } else {
                     String newConnection = "";
                     newConnection = fileList.get(i) + fileList.get(j);

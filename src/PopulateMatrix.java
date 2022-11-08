@@ -1,3 +1,13 @@
+
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         Populates the matrix by filling the weights 
+ * 
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +19,10 @@ public class PopulateMatrix {
     Map<String, Integer> frequencyPairMap;
     List<String> arrayIndex = new ArrayList<>();
 
+    /**
+     * 
+     * @param totalFiles
+     */
     void createMatrix(Set<String> totalFiles) {
         adjMatrixSize = totalFiles.size();
         arrayIndex.addAll(totalFiles);

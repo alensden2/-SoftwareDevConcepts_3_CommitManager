@@ -1,3 +1,12 @@
+/**
+     * Software Development Concepts
+     * 
+     * @author Alen Santosh John
+     * @author B00930528
+     * 
+     *         This class is used to get the broad features
+     * 
+     */
 import java.util.*;
 
 public class BroadFeatures {
@@ -7,9 +16,15 @@ public class BroadFeatures {
     Set<String> broadFeaturesSet = new HashSet<>();
     Map<String, Integer> thresholdFrequencyComponents = new HashMap<>();
 
+    // Stores all the feature commits.
+    /**
+     * 
+     * @param taskName
+     * @param committedFiles
+     */
     void generateMapForFeatures(String taskName, Set<String> committedFiles) {
         ArrayList<String> files = new ArrayList<>();
-        if(taskName.charAt(0) == 'F'){
+        if (taskName.charAt(0) == 'F') {
             if (taskFiles.containsKey(taskName)) {
                 ArrayList<String> currentFiles = new ArrayList<>();
                 currentFiles = taskFiles.get(taskName);
@@ -27,6 +42,7 @@ public class BroadFeatures {
         }
     }
 
+    // Comparing and setting all the common components
     void unionOfAllFiles() {
         Iterator<Map.Entry<String, ArrayList<String>>> itr = taskFiles.entrySet().iterator();
 
@@ -45,6 +61,11 @@ public class BroadFeatures {
 
     }
 
+    // Finds all the components that are common
+    /**
+     * 
+     * @param components
+     */
     void getBroadFeatures(Set<Set<String>> components) {
         ArrayList<ArrayList<String>> allComponents = new ArrayList<>();
         Map<String, Integer> thresholdFrequencyComponent = new HashMap<>();
@@ -83,14 +104,19 @@ public class BroadFeatures {
         this.thresholdFrequencyComponents = thresholdFrequencyComponent;
     }
 
+    // returns the set
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     Set<String> getFeaturesThreshold(int threshold) {
         Set<String> broadFeatureSet = new HashSet<>();
         Iterator<Map.Entry<String, Integer>> itr = thresholdFrequencyComponents.entrySet().iterator();
 
-        while(itr.hasNext())
-        {
+        while (itr.hasNext()) {
             Map.Entry<String, Integer> entry = itr.next();
-            if(entry.getValue()>=threshold){
+            if (entry.getValue() >= threshold) {
                 broadFeatureSet.add(entry.getKey());
             }
         }
@@ -98,4 +124,3 @@ public class BroadFeatures {
     }
 
 }
-

@@ -1,3 +1,12 @@
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         Returns all the matrix computations - helper for finding the components
+ * 
+ */
 import java.util.*;
 
 public class MatrixRelations {
@@ -10,6 +19,14 @@ public class MatrixRelations {
     int size;
     int threshold;
 
+    /**
+     * 
+     * @param adjMatrix
+     * @param size
+     * @param threshold
+     * @param totalFiles
+     * @return
+     */
     Set<String> createGeneralComponentSet(int[][] adjMatrix, int size, int threshold, Set<String> totalFiles) {
         arrayIndex.addAll(totalFiles);
         this.size = size;
@@ -44,6 +61,10 @@ public class MatrixRelations {
         return generalComponents;
     }
 
+    /**
+     * 
+     * @param adjMatrix
+     */
     void relatedComponents(int[][] adjMatrix) {
         Set<String> linkedNodes = new HashSet<>();
         List<String> generalComponentsList = new ArrayList<>();
@@ -92,35 +113,39 @@ public class MatrixRelations {
                     if (!finalComponentIterator.hasNext())
                         finalComponents.add(s);
                 }
-                //System.out.println(finalComponentIterator.next());
+                // System.out.println(finalComponentIterator.next());
             }
-//            for(Set<String> x: finalComponents){
-//                    Set<String> tempSet1 = new HashSet<>(s);
-//                    Set<String> tempSet2 = new HashSet<>(s);
-//                    tempSet1.retainAll(x);
-//                    if(tempSet1.size()>0){
-//                        finalComponents.remove(x);
-//                        tempSet2.addAll(x);
-//                        finalComponents.add(tempSet2);
-//                        tempSet1 = new HashSet<>();
-//                        tempSet2 = new HashSet<>();
-//                        break;
-//                    }else {
-//                        if(finalComponents.)
-//                        finalComponents.add(s);
-//                        continue;
-//                    }
-//                }
+            // for(Set<String> x: finalComponents){
+            // Set<String> tempSet1 = new HashSet<>(s);
+            // Set<String> tempSet2 = new HashSet<>(s);
+            // tempSet1.retainAll(x);
+            // if(tempSet1.size()>0){
+            // finalComponents.remove(x);
+            // tempSet2.addAll(x);
+            // finalComponents.add(tempSet2);
+            // tempSet1 = new HashSet<>();
+            // tempSet2 = new HashSet<>();
+            // break;
+            // }else {
+            // if(finalComponents.)
+            // finalComponents.add(s);
+            // continue;
+            // }
+            // }
 
         }
         commonComponentSet.addAll(finalComponents);
     }
 
-    Set<Set<String>> getAllComponents(){
+    /**
+     * 
+     * @return
+     */
+    Set<Set<String>> getAllComponents() {
         Set<Set<String>> allComponents = new HashSet<>();
         Set<String> unrelatedComponents = new HashSet<>();
         allComponents.addAll(commonComponentSet);
-        for(String s : independentComponents){
+        for (String s : independentComponents) {
             unrelatedComponents.add(s);
             allComponents.add(unrelatedComponents);
             unrelatedComponents = new HashSet<>();

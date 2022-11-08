@@ -1,8 +1,22 @@
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         Gives the weights in the graph 
+ * 
+ */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GraphWeightCalculator {
+    /**
+     * 
+     * @param commitRelationFiles
+     * @return
+     */
     Map<String, Integer> frequencyPairs(List<String> commitRelationFiles) {
         Map<String, Integer> frequencyPairMap = new HashMap<>();
 

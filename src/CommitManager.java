@@ -1,3 +1,12 @@
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         Commit Manager
+ * 
+ */
 import java.util.*;
 
 public class CommitManager {
@@ -16,7 +25,7 @@ public class CommitManager {
     BroadFeatures broadFeatures = new BroadFeatures();
     BusyClasses busyClasses = new BusyClasses();
     int start = -1;
-    int end= -1;
+    int end = -1;
 
     int[][] adjMatrix;
 
@@ -24,11 +33,18 @@ public class CommitManager {
     Set<Set<String>> components = new HashSet<>();
     Expert expert = new Expert();
 
-
+    /**
+     * 
+     * @param developer
+     * @param commitTime
+     * @param task
+     * @param commitFiles
+     * @return
+     */
     boolean addCommit(String developer, int commitTime, String task, Set<String> commitFiles) {
-        if(start != -1 && end !=-1){
+        if (start != -1 && end != -1) {
             CommitObject commitObj = new CommitObject(developer, commitTime, task, commitFiles);
-            if(commitTime>=start && commitTime <= end){
+            if (commitTime >= start && commitTime <= end) {
 
                 Set<String> filesCommitted;
                 bugTasks.generateMapForTasks(task, commitFiles);
@@ -88,6 +104,11 @@ public class CommitManager {
         return false;
     }
 
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     boolean componentMinimum(int threshold) {
         frequencyPairMap = graphWeightCalculator.frequencyPairs(commitFilesRelation);
 
@@ -100,6 +121,10 @@ public class CommitManager {
         return true;
     }
 
+    /**
+     * 
+     * @return
+     */
     Set<Set<String>> softwareComponents() {
         Set<Set<String>> components = new HashSet<>();
         components = matrixRelations.getAllComponents();
@@ -107,6 +132,11 @@ public class CommitManager {
         return components;
     }
 
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     Set<String> repetitionInBugs(int threshold) {
         bugTasks.generateMaxFrequencyCommits();
         Set<String> repeatedBugs = new HashSet<>();
@@ -114,6 +144,11 @@ public class CommitManager {
         return repeatedBugs;
     }
 
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     Set<String> broadFeatures(int threshold) {
         Set<String> broadFeaturesSet = new HashSet<>();
         broadFeatures.unionOfAllFiles();
@@ -122,6 +157,11 @@ public class CommitManager {
         return broadFeaturesSet;
     }
 
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     Set<String> experts(int threshold) {
         Set<String> expertsSet = new HashSet<>();
         expert.unionOfAllFiles();
@@ -130,15 +170,26 @@ public class CommitManager {
         return expertsSet;
     }
 
-    List<String> busyClasses ( int limit ) {
+    /**
+     * 
+     * @param limit
+     * @return
+     */
+    List<String> busyClasses(int limit) {
         List<String> busyClass = new ArrayList<>();
         busyClasses.generateFrequencyTable();
         busyClass = busyClasses.getBusyClasses(limit);
         return busyClass;
     }
 
-    boolean setTimeWindow( int startTime, int endTime ){
-        if(allCommits.size() == 0){
+    /**
+     * 
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    boolean setTimeWindow(int startTime, int endTime) {
+        if (allCommits.size() == 0) {
             start = startTime;
             end = endTime;
         } else {
@@ -147,30 +198,30 @@ public class CommitManager {
             Iterator<CommitObject> it = allCommits.iterator();
             while (it.hasNext()) {
                 CommitObject s = it.next();
-                CommitObject newS = new CommitObject(s.developer,s.commitTime,s.task,s.commitFiles);
+                CommitObject newS = new CommitObject(s.developer, s.commitTime, s.task, s.commitFiles);
                 allCommitsCopy.add(newS);
             }
-            for (CommitObject commitObject : allCommitsCopy){
+            for (CommitObject commitObject : allCommitsCopy) {
                 allCommits.clear();
-                addCommit(commitObject.developer, commitObject.commitTime,commitObject.task,commitObject.commitFiles);
+                addCommit(commitObject.developer, commitObject.commitTime, commitObject.task, commitObject.commitFiles);
             }
         }
 
         return true;
     }
 
-    void clearTimeWindow(){
+    void clearTimeWindow() {
         start = -1;
         end = -1;
         Iterator<CommitObject> it = allCommits.iterator();
         while (it.hasNext()) {
             CommitObject s = it.next();
-            CommitObject newS = new CommitObject(s.developer,s.commitTime,s.task,s.commitFiles);
+            CommitObject newS = new CommitObject(s.developer, s.commitTime, s.task, s.commitFiles);
             allCommitsCopy.add(newS);
         }
-        for (CommitObject commitObject : allCommitsCopy){
+        for (CommitObject commitObject : allCommitsCopy) {
             allCommits.clear();
-            addCommit(commitObject.developer, commitObject.commitTime,commitObject.task,commitObject.commitFiles);
+            addCommit(commitObject.developer, commitObject.commitTime, commitObject.task, commitObject.commitFiles);
         }
     }
 }

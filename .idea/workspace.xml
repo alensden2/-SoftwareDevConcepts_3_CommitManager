@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32ad58e1-7d92-43be-b04e-0b29f739d980" name="Changes" comment="" />
+    <list default="true" id="32ad58e1-7d92-43be-b04e-0b29f739d980" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/MatrixRelationsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/MatrixRelationsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BroadFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BroadFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BugTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BugTasks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusyClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusyClasses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CommitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommitManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MatrixRelations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MatrixRelations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VertexRelationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VertexRelationBuilder.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,34 +110,49 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="199" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="212" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="213" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/CommitManager.java</url>
-          <line>139</line>
-          <properties class="CommitManager" method="setTimeWindow">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>19</line>
+          <properties class="BroadFeatures" method="generateMapForFeatures">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="211" />
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="221" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="223" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="225" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="226" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/BroadFeatures.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="227" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

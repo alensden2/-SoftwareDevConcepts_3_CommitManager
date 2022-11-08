@@ -1,3 +1,13 @@
+
+/**
+ * Software Development Concepts
+ * 
+ * @author Alen Santosh John
+ * @author B00930528
+ * 
+ *         Returns all the developers
+ * 
+ */
 import java.util.*;
 
 public class Expert {
@@ -5,6 +15,11 @@ public class Expert {
     ArrayList<ArrayList<String>> allComponents = new ArrayList<>();
     Map<String, Integer> thresholdFrequencyComponents = new HashMap<>();
 
+    /**
+     * 
+     * @param developer
+     * @param committedFiles
+     */
     void generateMapForExpert(String developer, Set<String> committedFiles) {
         ArrayList<String> files = new ArrayList<>();
 
@@ -42,6 +57,10 @@ public class Expert {
 
     }
 
+    /**
+     * 
+     * @param components
+     */
     void getBroadFeatures(Set<Set<String>> components) {
         ArrayList<ArrayList<String>> allComponents = new ArrayList<>();
         Map<String, Integer> thresholdFrequencyComponent = new HashMap<>();
@@ -80,6 +99,11 @@ public class Expert {
         this.thresholdFrequencyComponents = thresholdFrequencyComponent;
     }
 
+    /**
+     * 
+     * @param threshold
+     * @return
+     */
     Set<String> getFeaturesThreshold(int threshold) {
         Set<String> broadFeatureSet = new HashSet<>();
         Iterator<Map.Entry<String, Integer>> itr = thresholdFrequencyComponents.entrySet().iterator();
@@ -92,6 +116,5 @@ public class Expert {
         }
         return broadFeatureSet;
     }
-
 
 }
