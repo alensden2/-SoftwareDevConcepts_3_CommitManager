@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CommitManager.iml" filepath="$PROJECT_DIR$/.idea/CommitManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment_3_Graph.iml" filepath="$PROJECT_DIR$/assignment_3_Graph.iml" />
     </modules>
   </component>
 </project>
